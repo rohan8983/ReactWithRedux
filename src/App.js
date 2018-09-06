@@ -3,6 +3,15 @@ import logo from "./logo.svg";
 import "./App.css";
 import { connect } from "react-redux";
 import { handleChange, onSubmit } from "./actions";
+import { bounceIn, rubberBand, slideInLeft } from "react-animations";
+import Radium, { StyleRoot } from "radium";
+
+const styles = {
+  bounce: {
+    animation: "x 2s",
+    animationName: Radium.keyframes(slideInLeft, "bounce")
+  }
+};
 
 const App = props => {
   const { email, password } = props;
@@ -12,9 +21,9 @@ const App = props => {
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title">Welcome to React</h1>
       </header>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
+      <br />
+      <br />
+      <br />
       <input
         type="text"
         name="email"
@@ -46,14 +55,17 @@ const App = props => {
       <br />
       <br />
       {props.flag ? (
-        <div>
-          <label>Email: </label>
-          <label>{email}</label>
-          <br />
-          <br />
-          <label>Password: </label>
-          <label>{password}</label>
-        </div>
+        <StyleRoot>
+          <div class="alert alert-success" role="alert" style={styles.bounce}>
+            <h3>Your entered values are:</h3>
+            <label>Email:&nbsp; </label>
+            <label className="alert-link">{email}</label>
+            <br />
+            <br />
+            <label>Password: &nbsp;</label>
+            <label className="alert-link">{password}</label>
+          </div>
+        </StyleRoot>
       ) : (
         ""
       )}
