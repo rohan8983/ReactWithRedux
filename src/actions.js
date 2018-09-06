@@ -1,14 +1,7 @@
-export function onChangeName(value, valueType) {
-  return {
-    type: "HANDLE_NAME_CHANGE",
-    value,
-    valueType
-  };
-}
+export const handleChange = (value, valueType) => ({
+  type: "HANDLE_CHANGE",
+  value,
+  valueType
+});
 
-export function displayOnSubmit(flag) {
-  return {
-    type: "HANDLE_DISPLAY_NAME",
-    flag
-  };
-}
+export const onSubmit = data => ({ type: "ON_SUBMIT", data });

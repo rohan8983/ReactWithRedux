@@ -1,21 +1,25 @@
 const initialState = {
-  name: "",
-  display: false
+  email: "",
+  password: "",
+  flag: false
 };
 
-export default function sampleApp(state = initialState, action) {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "HANDLE_NAME_CHANGE":
+    case "HANDLE_CHANGE":
       return {
         ...state,
-        [action.valueType]: action.value
+        [action.valueType]: action.value,
+        flag: false
       };
-    case "HANDLE_DISPLAY_NAME":
+    case "ON_SUBMIT":
       return {
         ...state,
-        display: action.flag
+        flag: true
       };
     default:
       return state;
   }
-}
+};
+
+export default rootReducer;
